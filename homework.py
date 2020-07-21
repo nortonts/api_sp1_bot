@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-PRACTICUM_TOKEN = os.getenv("PRACTICUM_TOKEN")
+PRACTICUM_TOKEN = os.getenv('PRACTICUM_TOKEN')
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
-API_URL = os.getenv('API_URL')
+API_URL = 'https://praktikum.yandex.ru/api/user_api/homework_statuses/'
 
 
 def parse_homework_status(homework):
@@ -32,7 +32,7 @@ def get_homework_statuses(current_timestamp=None):
     try:
         homework_statuses = requests.get(API_URL, headers=headers, params=params)
     except requests.exceptions.RequestException as e:
-        print(f"Обнаружена ошибка: {e}")
+        print(f'Обнаружена ошибка: {e}')
     return homework_statuses.json()
 
 
